@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import uuid from "uuid";
 import { connect } from "react-redux";
-import { addQuote } from "../actions/quotes";
+import { createQuote } from "../actions/quotes";
 
 class QuoteForm extends Component {
   state = {
@@ -16,12 +15,27 @@ class QuoteForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.addQuote({
-      ...this.state,
-      id: uuid(),
-      votes: 0
-    });
+
+    this.props.createQuote({ ...this.state, votes: 0 });
     this.setState({ content: "", author: "" });
+
+    // const newQuote = {
+    //   ...this.state,
+    //   votes: 0
+    // };
+
+    // fetch("http://localhost:3000/quotes", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(newQuote)
+    // })
+    //   .then(r => r.json())
+    //   .then(q => {
+    //     this.props.addQuote(q);
+    //     this.setState({ content: "", author: "" });
+    //   });
   };
 
   render() {
@@ -86,4 +100,4 @@ class QuoteForm extends Component {
 // };
 
 //add arguments to connect as needed
-export default connect(null, { addQuote })(QuoteForm);
+export default connect(null, { createQuote })(QuoteForm);

@@ -4,7 +4,7 @@ import QuoteCard from "../components/QuoteCard";
 import {
   upvoteQuote,
   downvoteQuote,
-  deleteQuote,
+  destroyQuote,
   fetchQuotes
 } from "../actions/quotes";
 
@@ -30,7 +30,7 @@ class Quotes extends Component {
                   {...q}
                   handleUpvote={this.props.upvoteQuote}
                   handleDownvote={this.props.downvoteQuote}
-                  handleDelete={this.props.deleteQuote}
+                  handleDestroy={this.props.destroyQuote}
                 />
               ))}
             </div>
@@ -41,13 +41,13 @@ class Quotes extends Component {
   }
 }
 
-function mapStateToProps(argument) {
-  return { quotes: argument.quotes };
+function mapStateToProps({ quotes }) {
+  return { quotes };
 }
 
 export default connect(mapStateToProps, {
   upvoteQuote,
   downvoteQuote,
-  deleteQuote,
+  destroyQuote,
   fetchQuotes
 })(Quotes);

@@ -7,7 +7,7 @@ const QuoteCard = ({
   handleDownvote,
   id,
   votes,
-  handleDelete
+  handleDestroy
 }) => (
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
@@ -26,21 +26,21 @@ const QuoteCard = ({
           aria-label="Basic example"
         >
           <button
-            onClick={() => handleUpvote(id)}
+            onClick={() => handleUpvote(id, votes)}
             type="button"
             className="btn btn-primary"
           >
             Upvote
           </button>
           <button
-            onClick={() => handleDownvote(id)}
+            onClick={() => handleDownvote(id, votes)}
             type="button"
             className="btn btn-secondary"
           >
             Downvote
           </button>
           <button
-            onClick={() => handleDelete(id)}
+            onClick={() => handleDestroy(id)}
             type="button"
             className="btn btn-danger"
           >
