@@ -15,27 +15,8 @@ class QuoteForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-
     this.props.createQuote({ ...this.state, votes: 0 });
     this.setState({ content: "", author: "" });
-
-    // const newQuote = {
-    //   ...this.state,
-    //   votes: 0
-    // };
-
-    // fetch("http://localhost:3000/quotes", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(newQuote)
-    // })
-    //   .then(r => r.json())
-    //   .then(q => {
-    //     this.props.addQuote(q);
-    //     this.setState({ content: "", author: "" });
-    //   });
   };
 
   render() {
