@@ -10,13 +10,20 @@ export const login = user => {
   return dispatch =>
     fetch("http://localhost:3000/users/sign_in.json", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ user })
     })
-      .then(r => r.json())
-      .then(u => dispatch(setUser(u)));
+      .then(r => {
+        debugger;
+        return r.json();
+      })
+      .then(u => {
+        debugger;
+        dispatch(setUser(u));
+      });
 };
 
 export const signup = user => {

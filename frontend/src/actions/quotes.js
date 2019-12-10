@@ -41,6 +41,7 @@ export const createQuote = quote => {
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify(quote)
     })
       .then(r => r.json())
@@ -65,6 +66,7 @@ export const upvoteQuote = (id, votes) => {
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify({ votes: votes + 1 })
     }).then(() => {
       dispatch(upvoteQuoteLocal(id));
