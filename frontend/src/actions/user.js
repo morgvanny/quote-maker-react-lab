@@ -7,12 +7,12 @@ export const setUser = user => {
 
 export const login = user => {
   return dispatch =>
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3000/users/sign_in.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify({ user })
     })
       .then(r => r.json())
       .then(u => dispatch(setUser(u)));
