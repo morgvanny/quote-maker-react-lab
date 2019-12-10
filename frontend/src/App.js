@@ -4,6 +4,7 @@ import QuoteForm from "./components/QuoteForm";
 import Quotes from "./containers/Quotes";
 import Nav from "./components/Nav";
 import Login from "./Login";
+import Signup from "./Signup";
 class App extends Component {
   render() {
     return (
@@ -19,6 +20,9 @@ class App extends Component {
         <hr />
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
         </Route>
         <QuoteForm />
         <Quotes />

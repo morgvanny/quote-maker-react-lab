@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "./actions/user";
-class Login extends Component {
+import { signup } from "./actions/user";
+class Signup extends Component {
   state = { username: "", password: "" };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.login({
+    this.props.signup({
       username: e.target.username.value,
       password: e.target.password.value
     });
@@ -28,4 +28,4 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { login })(Login);
+export default connect(null, { signup })(Signup);

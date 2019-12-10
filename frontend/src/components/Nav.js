@@ -6,6 +6,9 @@ const Nav = props => {
       <NavLink className="item" to="/login">
         Login
       </NavLink>
+      <NavLink className="item" to="/signup">
+        Signup
+      </NavLink>
     </div>
   );
 };
