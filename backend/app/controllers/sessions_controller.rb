@@ -1,10 +1,22 @@
 # frozen_string_literal: true
 
-class SessionsController < Devise::SessionsController
-  respond_to :json
+class SessionsController < ApplicationController
+  def show
+    render json: current_user
+  end
+
   def create
-    super do |_user|
-      byebug
+    user = User.find_by_username(params[:user][:username])
+    if user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      render json: user
+    else
+      render json: {}
     end
+  end
+
+  def destroy
+    session.clear
+    render json: {}
   end
 end

@@ -5,7 +5,13 @@ import Quotes from "./containers/Quotes";
 import Nav from "./components/Nav";
 import Login from "./Login";
 import Signup from "./Signup";
+import { getProfile } from "./actions/user";
+import { connect } from "react-redux";
 class App extends Component {
+  componentDidMount() {
+    this.props.getProfile();
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -31,4 +37,9 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  state => {
+    return { user: state.user };
+  },
+  { getProfile }
+)(App);

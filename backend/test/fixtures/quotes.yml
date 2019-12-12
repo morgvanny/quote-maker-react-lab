@@ -2,10 +2,8 @@
 
 one:
   content: MyString
-  author: MyString
-  votes: 1
+  user: one
 
 two:
   content: MyString
-  author: MyString
-  votes: 1
+  user: two

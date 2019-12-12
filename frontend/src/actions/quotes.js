@@ -80,6 +80,7 @@ export const downvoteQuote = (id, votes) => {
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify({ votes: votes - 1 })
     }).then(() => {
       dispatch(downvoteQuoteLocal(id));
