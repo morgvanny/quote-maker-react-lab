@@ -14,7 +14,7 @@ class QuotesController < ApplicationController
 
   # POST /quotes
   def create
-    @quote = Quote.new(quote_params)
+    @quote = current_user.quotes.build(quote_params)
 
     if @quote.save
       render json: @quote, status: :created, location: @quote

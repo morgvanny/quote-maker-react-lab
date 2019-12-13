@@ -42,10 +42,11 @@ export const createQuote = quote => {
         "Content-Type": "application/json"
       },
       credentials: "include",
-      body: JSON.stringify(quote)
+      body: JSON.stringify({ quote })
     })
       .then(r => r.json())
       .then(q => {
+        debugger
         dispatch(addQuote(q));
       });
 };

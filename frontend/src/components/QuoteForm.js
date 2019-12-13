@@ -5,7 +5,6 @@ import { createQuote } from "../actions/quotes";
 class QuoteForm extends Component {
   state = {
     content: "",
-    author: ""
   };
 
   handleOnChange = event => {
@@ -16,7 +15,7 @@ class QuoteForm extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     this.props.createQuote({ ...this.state, votes: 0 });
-    this.setState({ content: "", author: "" });
+    this.setState({ content: "" });
   };
 
   render() {
@@ -40,20 +39,6 @@ class QuoteForm extends Component {
                         onChange={this.handleOnChange}
                         className="form-control"
                         value={this.state.content}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="author" className="col-md-4 control-label">
-                      Author
-                    </label>
-                    <div className="col-md-5">
-                      <input
-                        name="author"
-                        onChange={this.handleOnChange}
-                        className="form-control"
-                        type="text"
-                        value={this.state.author}
                       />
                     </div>
                   </div>
