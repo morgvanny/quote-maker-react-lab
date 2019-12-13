@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   render() {
-    const { profile } = this.props.user
+    const { user } = this.props
     return (
       <div className="container-fluid">
         <div
@@ -41,9 +41,9 @@ class App extends Component {
         <Nav />
 
         <hr />
-        <OnlyLoggedOutRoute exact path="/login" profile={profile} component={Login} />
-        <OnlyLoggedOutRoute exact path="/signup" profile={profile} component={Signup} />
-        {profile ?
+        <OnlyLoggedOutRoute exact path="/login" profile={user} component={Login} />
+        <OnlyLoggedOutRoute exact path="/signup" profile={user} component={Signup} />
+        {user ?
           <QuoteForm />
           : null}
         <Quotes />
@@ -53,8 +53,8 @@ class App extends Component {
 }
 
 export default connect(
-  state => {
-    return { user: state.user };
+  ({user}) => {
+    return { user };
   },
   { getProfile }
 )(App);

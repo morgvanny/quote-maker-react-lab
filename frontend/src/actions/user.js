@@ -11,9 +11,17 @@ export const getProfile = () => {
       credentials: "include"
     })
       .then(r => {
-        return r.json();
+        if (r.status >= 200 && r.status < 300) {
+          return r.json();
+        } else {
+          throw new Error(r.statusText || r.status);
+        }
       })
-      .then(u => dispatch(setUser(u)));
+      .then(u => dispatch(setUser(u)))
+      .catch(e => {
+        console.error(e);
+        dispatch(clearUser());
+      });
 };
 
 export const login = user => {

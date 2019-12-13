@@ -1,11 +1,11 @@
 import { SET_USER, CLEAR_USER } from "../actions/user";
 
-export default (state = { profile: undefined }, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SET_USER:
-      return { ...state, profile: action.user };
+      return action.user;
     case CLEAR_USER:
-      return { profile: null };
+      return null;
     default:
       return state;
   }
