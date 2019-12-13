@@ -2,7 +2,7 @@ import React from "react";
 
 const QuoteCard = ({
   content,
-  author,
+  user,
   handleUpvote,
   handleDownvote,
   id,
@@ -15,7 +15,7 @@ const QuoteCard = ({
         <blockquote className="card-blockquote">
           <p>{content}</p>
           <footer>
-            - author <cite title="Source Title">{author}</cite>
+            - <cite title="Source Title">{user.username}</cite>
           </footer>
         </blockquote>
       </div>

@@ -35,11 +35,16 @@ export const login = user => {
       body: JSON.stringify({ user })
     })
       .then(r => {
-        return r.json();
+        if (r.status >= 200 && r.status < 300) {
+          return r.json();
+        } else {
+          throw new Error(r.statusText || r.status);
+        }
       })
       .then(u => {
         dispatch(setUser(u));
-      });
+      })
+      .catch(e => console.log(e));
   };
 };
 export const logout = () => {
@@ -64,8 +69,15 @@ export const signup = user => {
       credentials: "include",
       body: JSON.stringify({ user })
     })
-      .then(r => r.json())
-      .then(u => dispatch(setUser(u)));
+      .then(r => {
+        if (r.status >= 200 && r.status < 300) {
+          return r.json();
+        } else {
+          throw new Error(r.statusText || r.status);
+        }
+      })
+      .then(u => dispatch(setUser(u)))
+      .catch(e => console.log(e));
 };
 
 const clearUser = () => {

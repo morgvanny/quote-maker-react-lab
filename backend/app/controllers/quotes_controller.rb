@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :update, :destroy]
+  before_action :set_quote, only: %i[show update destroy]
 
   # GET /quotes
   def index
     @quotes = Quote.all
-    render json: @quotes
+    render json: @quotes, include: {user: {only: [:username]}}
   end
 
   # GET /quotes/1
@@ -38,13 +40,14 @@ class QuotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quote
-      @quote = Quote.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def quote_params
-      params.require(:quote).permit(:content, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def quote_params
+    params.require(:quote).permit(:content, :user_id)
+  end
 end
